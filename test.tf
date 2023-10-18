@@ -4,13 +4,8 @@ variable "resource_group_name" {
   default     = "tf-test"
 }
 
-variable "location" {
-  description = "The location for Azure resources."
-  type        = string
-  default     = "eastus2"
-}
 
 resource "azurerm_resource_group" "example" {
   name     = var.resource_group_name
-  location = var.location
+  location = "East US"
 }
