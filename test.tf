@@ -1,7 +1,16 @@
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = var.bucket_name
 
+  acl    = var.acl
 
+  versioning {
+    enabled = true
+  }
 
-resource "azurerm_resource_group" "example" {
-  name     = var.resource_group_name
-  location = "East US"
+  logging {
+    target_bucket = aws_s3_bucket.my_bucket.id
+    target_prefix = "logs/"
+  }
+
+  tags = var.tags
 }
